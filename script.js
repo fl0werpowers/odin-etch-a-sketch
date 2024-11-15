@@ -19,3 +19,13 @@ for (let x = 0; x < GRID_DIMENSIONS; x++) {
 }
 
 container.appendChild(gridEl);
+
+const boxList = document.getElementsByClassName("box");
+
+console.log(document.getElementsByClassName("box"));
+
+for (const box of boxList) {
+	box.addEventListener("mouseover", (e) => {
+		e.target.style.backgroundColor = "black";
+	});
+}
