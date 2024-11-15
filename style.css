@@ -8,3 +8,13 @@ html {
   *::after {
     box-sizing: inherit;
   }
+
+  .grid {
+    display: flex;
+  }
+
+  .box {
+    border: solid 1px;
+    width: 32px;
+    height: 32px;
+  }
