@@ -41,6 +41,7 @@ function buildCanvas(cells) {
 		for (let y = 0; y < targetCells; y++) {
 			const boxEl = document.createElement("div");
 			boxEl.classList.add("row", "box");
+			boxEl.dataset.lightValue = 90;
 			columnEl.appendChild(boxEl);
 		}
 
@@ -51,7 +52,10 @@ function buildCanvas(cells) {
 
 	for (const box of boxList) {
 		box.addEventListener("mouseover", (e) => {
-			e.target.style.backgroundColor = `hsl(${cellHue}, 100%, 50%)`;
+			const lightValue = e.target.dataset.lightValue;
+			e.target.style.backgroundColor = `hsl(${cellHue}, 100%, ${lightValue}%)`;
+			e.target.dataset.lightValue =
+				lightValue > 0 ? lightValue - 10 : lightValue;
 		});
 	}
 }
@@ -80,6 +84,7 @@ document.addEventListener("click", (e) => {
 		case "resetCanvas": {
 			for (const box of boxList) {
 				box.style.backgroundColor = "white";
+				box.dataset.lightValue = 90;
 			}
 			break;
 		}
