@@ -31,7 +31,7 @@ for (const box of boxList) {
 }
 
 document.addEventListener("click", (e) => {
-	if (e.target.type !== "reset") return;
+	if (e.target.id !== "resetCanvas") return;
 
 	for (const box of boxList) {
 		box.style.backgroundColor = "white";
