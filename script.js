@@ -11,7 +11,7 @@ for (let x = 0; x < GRID_DIMENSIONS; x++) {
 
 	for (let y = 0; y < GRID_DIMENSIONS; y++) {
 		const boxEl = document.createElement("div");
-		boxEl.classList.add("column", "box");
+		boxEl.classList.add("row", "box");
 		columnEl.appendChild(boxEl);
 	}
 
