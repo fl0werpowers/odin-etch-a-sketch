@@ -1,6 +1,7 @@
 const GRID_DIMENSIONS = 200;
 
 const container = document.getElementById("container");
+const boxList = document.getElementsByClassName("box");
 
 function buildCanvas(cells) {
 	if (cells <= 0) {
@@ -33,19 +34,15 @@ function buildCanvas(cells) {
 	}
 
 	container.appendChild(gridEl);
+
+	for (const box of boxList) {
+		box.addEventListener("mouseover", (e) => {
+			e.target.style.backgroundColor = "black";
+		});
+	}
 }
 
 document.addEventListener("load", buildCanvas());
-
-const boxList = document.getElementsByClassName("box");
-
-console.log(document.getElementsByClassName("box"));
-
-for (const box of boxList) {
-	box.addEventListener("mouseover", (e) => {
-		e.target.style.backgroundColor = "black";
-	});
-}
 
 document.addEventListener("click", (e) => {
 	switch (e.target.id) {
