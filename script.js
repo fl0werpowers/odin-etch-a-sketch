@@ -2,17 +2,24 @@ const GRID_DIMENSIONS = 16;
 
 const container = document.getElementById("container");
 
-function buildCanvas() {
+function buildCanvas(cells) {
+	if (cells <= 0) {
+		alert("Cell number cannot be less than 1.");
+		return;
+	}
+
 	if (container.childElementCount > 0) {
 		for (const childNode of container.childNodes) {
 			childNode.remove();
 		}
 	}
 
+	const targetCells = cells ? cells : GRID_DIMENSIONS;
+
 	const gridEl = document.createElement("div");
 	gridEl.className = "grid";
 
-	for (let x = 0; x < GRID_DIMENSIONS; x++) {
+	for (let x = 0; x < targetCells; x++) {
 		const columnEl = document.createElement("div");
 		columnEl.classList.add("column");
 
@@ -41,9 +48,12 @@ for (const box of boxList) {
 }
 
 document.addEventListener("click", (e) => {
-	if (e.target.id !== "resetCanvas") return;
-
-	for (const box of boxList) {
-		box.style.backgroundColor = "white";
+	switch (e.target.id) {
+		case "resetCanvas": {
+			for (const box of boxList) {
+				box.style.backgroundColor = "white";
+			}
+			break;
+		}
 	}
 });
