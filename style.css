@@ -39,3 +39,14 @@
     flex-grow: 1;
     border: solid 1px;
   }
+
+  #controls {
+    margin-top: 10px;
+
+    display: flex;
+    gap: 10px;
+  }
+
+  #controls button {
+    flex: 1 0 auto;
+  }
