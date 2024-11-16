@@ -11,11 +11,11 @@ function buildCanvas(cells) {
 
 	let targetCells = cells ? cells : GRID_DIMENSIONS;
 
-	if (targetCells > 250) {
+	if (targetCells > 100) {
 		alert(
-			"Maximum cell count limited to 250 for performance reasons. Defaulting to maximum value.",
+			"Maximum cell count limited to 100 for performance reasons. Defaulting to maximum value.",
 		);
-		targetCells = 250;
+		targetCells = 100;
 	}
 
 	if (container.childElementCount > 0) {
