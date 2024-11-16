@@ -3,6 +3,13 @@ const GRID_DIMENSIONS = 16;
 const container = document.getElementById("container");
 const boxList = document.getElementsByClassName("box");
 
+let cellHue = 0;
+
+setInterval(() => {
+	cellHue++;
+	if (cellHue >= 355) cellHue = 0;
+}, 10);
+
 function buildCanvas(cells) {
 	if (cells <= 0) {
 		alert("Cell number cannot be less than 1.");
@@ -44,9 +51,22 @@ function buildCanvas(cells) {
 
 	for (const box of boxList) {
 		box.addEventListener("mouseover", (e) => {
-			e.target.style.backgroundColor = "black";
+			e.target.style.backgroundColor = `hsl(${cellHue}, 100%, 50%)`;
 		});
 	}
+}
+
+function promptCellCount() {
+	let cellCountInput = Number(
+		window.prompt("Enter the desired number of cells:", ""),
+	);
+
+	if (Number.isNaN(cellCountInput)) {
+		alert("Incorrect number!");
+		cellCountInput = promptCellCount();
+	}
+
+	return cellCountInput;
 }
 
 document.addEventListener("load", buildCanvas());
@@ -65,16 +85,3 @@ document.addEventListener("click", (e) => {
 		}
 	}
 });
-
-function promptCellCount() {
-	let cellCountInput = Number(
-		window.prompt("Enter the desired number of cells:", ""),
-	);
-
-	if (Number.isNaN(cellCountInput)) {
-		alert("Incorrect number!");
-		cellCountInput = promptCellCount();
-	}
-
-	return cellCountInput;
-}
