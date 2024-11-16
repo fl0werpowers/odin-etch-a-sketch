@@ -37,7 +37,7 @@
 
   .box {
     flex-grow: 1;
-    border: solid 1px;
+    border: solid 0.1px;
   }
 
   #controls {
