@@ -1,4 +1,4 @@
-const GRID_DIMENSIONS = 200;
+const GRID_DIMENSIONS = 16;
 
 const container = document.getElementById("container");
 const boxList = document.getElementsByClassName("box");
