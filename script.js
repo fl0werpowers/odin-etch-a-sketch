@@ -29,3 +29,11 @@ for (const box of boxList) {
 		e.target.style.backgroundColor = "black";
 	});
 }
+
+document.addEventListener("click", (e) => {
+	if (e.target.type !== "reset") return;
+
+	for (const box of boxList) {
+		box.style.backgroundColor = "white";
+	}
+});
