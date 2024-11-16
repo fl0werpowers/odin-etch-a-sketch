@@ -1,4 +1,4 @@
-const GRID_DIMENSIONS = 16;
+const GRID_DIMENSIONS = 200;
 
 const container = document.getElementById("container");
 
@@ -23,7 +23,7 @@ function buildCanvas(cells) {
 		const columnEl = document.createElement("div");
 		columnEl.classList.add("column");
 
-		for (let y = 0; y < GRID_DIMENSIONS; y++) {
+		for (let y = 0; y < targetCells; y++) {
 			const boxEl = document.createElement("div");
 			boxEl.classList.add("row", "box");
 			columnEl.appendChild(boxEl);
@@ -49,6 +49,10 @@ for (const box of boxList) {
 
 document.addEventListener("click", (e) => {
 	switch (e.target.id) {
+		case "setCanvasSize": {
+			buildCanvas(promptCellCount());
+			break;
+		}
 		case "resetCanvas": {
 			for (const box of boxList) {
 				box.style.backgroundColor = "white";
@@ -57,3 +61,16 @@ document.addEventListener("click", (e) => {
 		}
 	}
 });
+
+function promptCellCount() {
+	let cellCountInput = Number(
+		window.prompt("Enter the desired number of cells:", ""),
+	);
+
+	if (Number.isNaN(cellCountInput)) {
+		alert("Incorrect number!");
+		cellCountInput = promptCellCount();
+	}
+
+	return cellCountInput;
+}
