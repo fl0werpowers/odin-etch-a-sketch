@@ -9,13 +9,20 @@ function buildCanvas(cells) {
 		return;
 	}
 
+	let targetCells = cells ? cells : GRID_DIMENSIONS;
+
+	if (targetCells > 250) {
+		alert(
+			"Maximum cell count limited to 250 for performance reasons. Defaulting to maximum value.",
+		);
+		targetCells = 250;
+	}
+
 	if (container.childElementCount > 0) {
 		for (const childNode of container.childNodes) {
 			childNode.remove();
 		}
 	}
-
-	const targetCells = cells ? cells : GRID_DIMENSIONS;
 
 	const gridEl = document.createElement("div");
 	gridEl.className = "grid";
